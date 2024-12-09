@@ -135,10 +135,10 @@ def word_durations(audio_path):
             duration.append([word,silence_duration,word_duration])
     return duration
 
-def create_image_list(image_list_path,word_durations):
+def create_image_list(image_list_path,word_timestamps):
     # Create the text file listing images and durations
     with open(image_list_path, "w") as f: 
-        for word,silence_duration,word_duration in word_durations:
+        for word,silence_duration,word_duration in word_timestamps:
             if silence_duration:
                 f.write(f"file 'boy\close.png'\n")
                 f.write(f"duration {silence_duration}\n")

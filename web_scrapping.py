@@ -11,11 +11,7 @@ def scrap_ids(present_in_db):
     soup = BeautifulSoup(thepage,'html.parser')
     u=soup.find('ul',class_='release_list')
     ids=[]
-    c=0
     for url in u.find_all('a',href=True):
-        c+=1
-        if c==6:
-            break
         temp_id=url['href'][-7:]
         if not present_in_db(temp_id):
             ids.append(temp_id)
@@ -47,10 +43,12 @@ def scrap_data_and_summarize(ids):
         sum.append(extr.abstractive_summarization(d))
 
     obj={'id':ids, 'headline':hl, 'release':rel, 'description':des, 'summary':sum}
-    df=pd.DataFrame(obj)
 
-    df.to_csv("newPIB_data.csv")
-    return df
+    return obj
+
+    # df=pd.DataFrame(obj)
+    # df.to_csv("newPIB_data.csv")
+    # return df
 
 # def present_in_db(id):
 #     return False

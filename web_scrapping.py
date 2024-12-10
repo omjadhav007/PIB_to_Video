@@ -50,9 +50,6 @@ def scrap_data_and_summarize(ids):
     # df.to_csv("newPIB_data.csv")
     # return df
 
-# def present_in_db(id):
-#     return False
-
 # ids=scrap_ids(present_in_db)
 # # print(ids)
 # data=web_scrap(ids)

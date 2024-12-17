@@ -155,6 +155,8 @@ def create_image_list(image_list_path,word_timestamps):
     with open(image_list_path, "a") as f:
         f.write(f"file '{last_image}'\n")
         f.write(f"duration 3.0\n")
+        
+    print("\nImage list created successfully...\n")
 
 def generate_video(video_path,image_list_path):
     # Use FFmpeg to create a video

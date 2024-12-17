@@ -1,25 +1,10 @@
-from avatarVideoGeneration import *
-from web_scrapping import *
+from save_latest_videos import *
 
-image_list_path="image_list.txt"
-
-def present_in_db(id):
+def is_present_in_db(id):
+    if id==2085482:
+        return True
     return False
 
-ids=scrap_ids(present_in_db)
-# print(ids)
-data=scrap_data_and_summarize(ids)
-# print(data)
+save_videos(is_present_in_db)
 
 
-for i in range(len(data['summary'])):
-    file_name=data['id'][i]
-    script=data['summary'][i]
-    video_path="video\\"+file_name+".mp4"
-    audio_path="audio\\"+file_name+".wav"
-    final_output_path="output_video\\"+file_name+".mp4"
-    generate_audio(script,audio_path)
-    word_timestamps=word_durations(audio_path)
-    create_image_list(image_list_path,word_timestamps)
-    generate_video(video_path,image_list_path)
-    combine_audio_video(video_path,audio_path,final_output_path)

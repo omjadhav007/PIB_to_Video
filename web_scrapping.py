@@ -15,6 +15,8 @@ def scrap_ids(present_in_db):
         temp_id=url['href'][-7:]
         if not present_in_db(temp_id):
             ids.append(temp_id)
+            break # Comment this line to scrap all ids 
+    print("\nIds scrapped successfully...\n")
     return ids
 
 def scrap_data_and_summarize(ids):
@@ -43,6 +45,8 @@ def scrap_data_and_summarize(ids):
         sum.append(extr.abstractive_summarization(d))
 
     obj={'id':ids, 'headline':hl, 'release':rel, 'description':des, 'summary':sum}
+
+    print("\nData with summary scrapped successfully...\n")
 
     return obj
 
